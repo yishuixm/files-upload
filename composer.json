@@ -5,7 +5,6 @@
   "license": "MIT",
   "homepage": "https://github.com/yishuixm/files-upload",
   "keywords": ["lbs"],
-  "minimum-stability": "stable",
   "authors": [
     {
       "name": "yishuixm",
