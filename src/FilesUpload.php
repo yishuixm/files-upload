@@ -43,7 +43,7 @@ class FilesUpload
 
         if($this->saveName==='default')
         {
-            $saveName = md5(time().$filename.get_client_ip()).".{$extension}";
+            $saveName = md5(time().$filename).".{$extension}";
 
         }
         elseif($this->saveName[0] === ':')
@@ -64,8 +64,8 @@ class FilesUpload
         $file = '';
 
         foreach ($dir as $_dir) {
-            if(!is_dir(HTML_PATH."$file/{$_dir}")){
-                @mkdir(HTML_PATH."$file/{$_dir}");
+            if(!is_dir(realpath($this->root)."$file/{$_dir}")){
+                @mkdir(realpath($this->root)."$file/{$_dir}");
             }
             $file = "$file/{$_dir}";
         }
@@ -130,7 +130,7 @@ class FilesUpload
                     'errmsg'		=> "上传文件不存在"
                 ];
             }
-            elseif(!@move_uploaded_file($file["tmp_name"], HTML_PATH.$this->getSaveName($file["name"])))
+            elseif(!@move_uploaded_file($file["tmp_name"], realpath($this->root).$this->getSaveName($file["name"])))
             {
                 $saveFile = HTML_PATH.$this->getSaveName($file["name"]);
                 $result[$key] = [
