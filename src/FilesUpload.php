@@ -16,7 +16,7 @@ class FilesUpload
     {
         if(!isset($config['root']))
         {
-            $config['root'] = config('UPLOAD.ROOT')?:'/uploads/';
+            $config['root'] = '/uploads/';
         }
 
         foreach ($config as $key=>$val)
